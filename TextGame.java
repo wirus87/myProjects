@@ -54,7 +54,6 @@ public class TextGame {
                             break;
                         default:
                             System.out.println("\nPodaj liczbe 1 albo 2. Nie inna.");
-                            question= "2";
                     }
                     break;
                 
@@ -85,10 +84,68 @@ public class TextGame {
                             break;
                         default:
                             System.out.println("\nPodaj liczbe 1, 2 lub 3.");
-                            question= "3";
                     }
                     break;
                 
+                case "4":
+                    System.out.println("\n4) Przypadkowo natrafiles na miecz jednego z goblinow, ale uslyszales dziwny szelest. Co robisz?");
+                    System.out.println("1| Podnosze miecz.\n2| Chowam sie za pobliskim murkiem i czekam.\n3| Pytam sie kto to.\n");
+                    switch(sc.next()){
+                        case "1":
+                            System.out.println("\nPodnoszac miecz poczules przyplyw mocy.");
+                            playerHP= playerHP+ 10;
+                            System.out.println("Otrzymales dodatkowo 10pktow zdrowia. Teraz masz: "+ playerHP +"pktow zycia");
+                            System.out.println("Przy okazji zobaczyles ze to byl tylko maly przestraszony krolik, ktory sobie pokical dalej.");
+                            question= "5";
+                            break;
+                        case "2":
+                            System.out.println("To tylko maly kroliczek... ktory rzucil Ci sie do gardla bo myslal ze sie na Niego czaisz... ;)");
+                            System.out.println("Tracisz 10pktow zycia");
+                            playerHP= playerHP- 10;
+                            question= "5";
+                            break;
+                        case "3":
+                            System.out.println("\nZ krzakow wychodzi maly kroliczek, ktory z przerazona minka ucieka od Ciebie.");
+                            question= "5";
+                            break;
+                        default:
+                            System.out.println("\nPodaj liczbe 1, 2 lub 3.");
+                    }
+                    break;
+                    
+                case "5":
+                    System.out.println("\n5) Ludzie podchodza do Ciebie blizej. Jestesmy ocalalymi po najezdzie tych dziwnych stworow. Potrzebujemy meznych wojow do walki z nimi takich jak Ty..");
+                    System.out.println("1| Walcze!!\n2| chowasz sie\n");
+                    switch(sc.next()){
+                        case "1":
+                            System.out.println("\nRzucasz mieczem w glowe goblina zombie.");
+                            monsterHP = rand.nextInt(10) + 1;
+                            injuries= monsterHP + rand.nextInt(35)+1; //dodatkowy modyfikator obrazen;
+                            if (injuries > playerHP){
+                                System.out.println("\nNiestety minales jego glowe! przegrales..");
+                                state= false;
+                            } else {
+                                System.out.println("\nMiecz trafil do celu. Zabiles przywodce.. zabijajac go reszta pieszchla. Wygrales");
+                                state= false;
+                            }
+                            break;
+                        case "2":
+                            System.out.println("\nCala horda goblinow zombie wparowuje i zabija wszystkich po kolei w koncu trafiajac na Ciebie");
+                            monsterHP = rand.nextInt(10) + 1; 
+                            injuries= monsterHP + rand.nextInt(35)+1; //dodatkowy modyfikator obrazen;
+                            if (injuries > playerHP){
+                                System.out.println("\nNiestety podczas walki umarles..\nNastepnym razem wiecej odwagi!");
+                                state= false;
+                            } else {
+                                System.out.println("\nJakims cudem pokonales gobliny! Dziekujemy za dzielna walke");
+                                state= false;
+                            }
+                            break;
+                        default:
+                            System.out.println("\nPodaj liczbe 1, 2 lub 3.");
+                    }
+                    break;
+                    
                 default:
                     System.out.println("\nNie ma takiego pytania");
                     System.out.println("Czy chcesz zakonczyc?\n 1|tak\n 2|nie");
