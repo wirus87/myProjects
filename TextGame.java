@@ -5,13 +5,32 @@
  */
 package textgame;
 
-import java.util.Random;
 import java.util.Scanner;
 
 /**
  * @author lkrupa
  */
 public class TextGame {
+    
+    public int Combat(int player, int beast){
+        //Random rand = new Random();
+            while(beast>0 || player>0){
+                beast-= (int) Math.random() * 6;
+                beast -= (int) (Math.random() * 5);
+                if(beast <= 0){
+                    System.out.println("Bestia ma 0 HP. Zabiles potwora..");
+                    break;
+                }
+                player -= (int) (Math.random() * 5);
+                if(player <= 0){
+                    System.out.println("Masz 0 HP. Zginales..");
+                    break;
+                }
+            }
+            //int x=0;
+            //x= (int) Math.random() * 6;
+            return beast;
+        }
 
     public static void main(String[] args) {
         /**
@@ -20,11 +39,11 @@ public class TextGame {
          */
 
         //zmienne odpowiadajace za ilosc zycia zawodnika i przeciwnikow;
-        int playerHP = 50, monsterHP = 0, injuries = 0;
+        int playerHP = 50, monsterHP, injuries;
         String playerName = "", question = "1", choice = "0";
         boolean state = true;
 
-        Random rand = new Random();
+        //Random rand = new Random();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Witaj obiezyswiecie w mojej grze!\n Znalezlismy Cie ledwo przytomnego.");
@@ -62,8 +81,8 @@ public class TextGame {
                     switch (sc.next()) {
                         case "1":
                             System.out.println("\nWylatujesz z pelna para na jednego z goblinow..");
-                            monsterHP = rand.nextInt(10) + 1; //(obrazenia od 1 do 10);
-                            injuries = monsterHP - rand.nextInt(3) + 1; //obrazenia od 1 do 4;
+                            monsterHP = (int) Math.random() * 10 +1; //(obrazenia od 1 do 10);
+                            injuries = monsterHP - (int) Math.random() * 3 +1; //obrazenia od 1 do 4;
                             playerHP = playerHP - injuries;
                             System.out.println("Po heroicznej walce z przywodca goblinow masz teraz " + playerHP + " zycia");
                             System.out.println("Odniosles " + injuries + " obrazen");
@@ -74,8 +93,8 @@ public class TextGame {
                             break;
                         case "3":
                             System.out.println("\nWalczysz z goblinami, ktore wtargnely do bunkra!");
-                            monsterHP = rand.nextInt(10) + 1; //(obrazenia od 1 do 10);
-                            injuries = monsterHP - rand.nextInt(10) + 1;
+                            monsterHP = (int) Math.random() * 10 +1; //(obrazenia od 1 do 10);
+                            injuries = monsterHP - (int) Math.random() * 10 +1;
                             playerHP = playerHP - injuries;
                             System.out.println("\nOtrzymales: " + injuries + " obrazen. Pozostalo Ci: " + playerHP + " zycia.");
                             question = "4";
@@ -119,8 +138,8 @@ public class TextGame {
                     switch (sc.next()) {
                         case "1":
                             System.out.println("\nRzucasz mieczem w glowe goblina zombie.");
-                            monsterHP = rand.nextInt(10) + 1;
-                            injuries = monsterHP + rand.nextInt(35) + 1; //dodatkowy modyfikator obrazen;
+                            monsterHP = (int) Math.random() * 10 +1;
+                            injuries = monsterHP + (int) Math.random() * 35 +1; //dodatkowy modyfikator obrazen;
                             if (injuries > playerHP) {
                                 System.out.println("\nNiestety minales jego glowe! przegrales..");
                                 state = false;
@@ -131,8 +150,8 @@ public class TextGame {
                             break;
                         case "2":
                             System.out.println("\nCala horda goblinow zombie wparowuje i zabija wszystkich po kolei w koncu trafiajac na Ciebie");
-                            monsterHP = rand.nextInt(10) + 1;
-                            injuries = monsterHP + rand.nextInt(35) + 1; //dodatkowy modyfikator obrazen;
+                            monsterHP = (int) Math.random() * 10 +1;
+                            injuries = monsterHP + (int) Math.random() * 10 +1; //dodatkowy modyfikator obrazen;
                             if (injuries > playerHP) {
                                 System.out.println("\nNiestety podczas walki umarles..\nNastepnym razem wiecej odwagi!");
                                 state = false;
