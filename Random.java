@@ -16,16 +16,18 @@ public class Random {
             while(beastHP>0 || playerHP>0){
                 
                 //atakuje gracz
-                beastHP -= (int) (Math.random() * 5);
+                beastHP -= (int) (Math.random() * 5)+1;
+                System.out.println("bestia ma:"+beastHP);
                 if(beastHP <= 0){
-                    System.out.println("Bestia ma 0 HP. Zabiles potwora..");
+                    System.out.println("Bestia zginela");
                     break;
                 }
                 
                 //atakuje potwor
-                playerHP -= (int) (Math.random() * 5);
+                playerHP -= (int) (Math.random() * 5)+1;
+                System.out.println("gracz ma:"+playerHP+"\n");
                 if(playerHP <= 0){
-                    System.out.println("Masz 0 HP. Zginales..");
+                    System.out.println("Zginales.. Naucz sie walczyc");
                     break;
                 }
             }
