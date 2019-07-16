@@ -1,41 +1,42 @@
 /*
- * Ten program nalezy do Lukasza Krupy.
- * Mozna kopiowac kod zrodlowy ale nie odpowiadam za jego stan.
- * Jesli macie propozycje co do zmian albo propozycje pracy to prosze pisac :)
- * lukasz.krupa87@gmail.com
+ * Ten program nalezy do Lukasza Krupy;
+ * Mozna kopiowac kod zrodlowy ale nie odpowiadam za jego stan;
+ * Jesli macie propozycje co do zmian albo propozycje pracy to prosze pisac :);
+ * lukasz.krupa87@gmail.com;
  */
 package textgame;
 
 /**
  *
- * @author lkrupa
+ * @author mozig
  */
-public class Beast {
-    //klasa odpowiedzialna za Potwora - modyfikator ataku, punkty zycia itp;
+public class Player {
+    //klasa odpowiedzialna za Bohatera, ktorym bedziemy kierowac - modyfikator ataku, punkty zycia itp;
     
+    //polaczenie kilku plikow (kilku klas) w jednym projekcie- dobrego zle poczatki ;);
     private String nazwa;
-    private int modAtaku;
-    private int silaAtaku;
-    private int HP;
+    private int modAtaku =0;
+    private int silaAtaku =0;
+    private int HP= 0;
     
-    public Beast() {
-    	this.nazwa= "goblin";
-    	this.HP = 40;
+    public Player() {
+        this.nazwa= "nieznany Zenon";
+        this.HP = 60;
         this.modAtaku = 1;
-        this.silaAtaku = 4;
+        this.silaAtaku = 10;
     }
     
-    public Beast(String imie, int HP, int modAtaku, int silaAtaku) {
+    public Player(String imie, int HP, int modAtaku, int silaAtaku) {
         this.nazwa = imie;
         this.HP = HP;
         this.modAtaku = modAtaku;
         this.silaAtaku = silaAtaku;
     }
     
-    public int AtakPotwora(int hpBohatera){
-        hpBohatera -= (int) (Math.random()* this.getSilaAtaku() + this.getModAtaku());
-        if (hpBohatera <= 0){
-            System.out.println("Bohater zginal");
+    public int AtakBohatera(int hpPotwora){
+        hpPotwora -= (int) (Math.random()* this.getSilaAtaku() + this.getModAtaku());
+        if (hpPotwora <= 0){
+            System.out.println("Bestia zginela");
             return 1;
         } else {
             return 0;
@@ -97,6 +98,4 @@ public class Beast {
     public void setHP(int HP) {
         this.HP = HP;
     }
-    
-    
 }
